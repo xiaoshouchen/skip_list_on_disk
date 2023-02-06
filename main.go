@@ -3,17 +3,22 @@ package main
 import (
 	"fmt"
 
-	"github.com/xiaoshouchen/skip-list/skip_list"
+	"github.com/xiaoshouchen/skip-list/sorted_string_table"
 )
 
 func main() {
 
-	sl := skip_list.NewSkipList(10)
-	sl.Insert("1", "1")
-	sl.Insert("2", "2")
-	sl.Insert("3", "3")
-	sl.Insert("1", "-1")
-	sl.Remove("2")
-	fmt.Println(sl.Get("1"))
-	fmt.Println(sl.Size())
+	sst := sorted_string_table.NewSST()
+	sst.Insert("hello", "world")
+	sst.Insert("你好", "世界")
+	get, err := sst.Get("你好")
+	if err != nil {
+		return
+	}
+	fmt.Println(get)
+	get1, err := sst.Get("hello")
+	if err != nil {
+		return
+	}
+	fmt.Println(get1)
 }
